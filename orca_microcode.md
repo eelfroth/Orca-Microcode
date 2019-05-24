@@ -5,10 +5,10 @@ this is a draft, or proposal, for a DSL that Orca can implement to define its op
 ## rough specification
 
 - `O { expression }` defines an operator, where _O_ has to be a single character
-- `[x,y]` identifies a cell, _x_ and _y_ being relative offsets
+- `[x,y]` addresses a cell, _x_ and _y_ being relative offsets
 - assigning to a cell marks it as output port
 - reading from a cell marks it as input port, and locks it
-- `@[x,y]` identifies a cell without marking or locking it
+- `@[x,y]` addresses a cell without marking or locking it
 - the data types are: **integer**, **boolean**, and **character**
 - integer assignments to a cell are in **mod 36**
 - boolean assingments to a cell are `*` (true) or `.` (false)

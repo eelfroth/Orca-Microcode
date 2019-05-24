@@ -6,9 +6,9 @@ this is a draft, or proposal, for a DSL that Orca can implement to define its op
 
 - `O { expression }` defines an operator, where _O_ has to be a single character
 - `[x,y]` identifies a cell, _x_ and _y_ being relative offsets
-- reading from a cell marks it as input, and locks it
-- assigning to a cell marks it as output
-- `@[x,y]` reads from a cell without locking it
+- assigning to a cell marks it as output port
+- reading from a cell marks it as input port, and locks it
+- `@[x,y]` identifies a cell without marking or locking it
 - the data types are: **integer**, **boolean**, and **character**
 - integer assignments to a cell are in **mod 36**
 - boolean assingments to a cell are `*` (true) or `.` (false)
@@ -24,20 +24,20 @@ this is a draft, or proposal, for a DSL that Orca can implement to define its op
 A { [0,1] = [-1,0] + [1,0]; }
 
 B { r = [-1,0] ? [-1,0] : 1;
-    m = [1,0] ? [1,0] : 8;
+    m = ([1,0] ? [1,0] : 8) -1;
     k = (frame / r) % (m * 2);
     [0,1] = k <= m ? k : m - (k - m); }
 
 C { r = [-1,0] ? [-1,0] : 1;
-    m = ([1,0] ? [1,0] : 8) -1;
+    m = [1,0] ? [1,0] : 8;
     [0,1] = (frame / r) % m; }
 
 D { r = [-1,0] ? [-1,0] : 1;
     m = [1,0] ? [1,0] : 8;
     [0,1] = 0 == (frame / r) % m; }
 
-E { [0,0] = @[1,0] != '.';
-    if (![0,0]) [1,0] = 'E'; }
+E { @[0,0] = @[1,0] != '.';
+    if (!@[0,0]) @[1,0] = 'E'; }
 
 F { [0,1] = [-1,0] == [1,0]; }
 
@@ -69,8 +69,8 @@ L { s = [-2,0] ? [-2,0] : 1;
 
 M { [0,1] = [-1,0] * [1,0]; }
 
-N { [0,0] = @[0,-1] != '.';
-    if (![0,0]) [0,-1] = 'N'; }
+N { @[0,0] = @[0,-1] != '.';
+    if (!@[0,0]) @[0,-1] = 'N'; }
 
 O { x = [-2,0] + 1;
     y = [-1,0] + 1;

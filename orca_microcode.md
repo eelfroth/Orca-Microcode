@@ -8,13 +8,13 @@ this is a draft, or proposal, for a DSL that Orca can implement to define its op
 - `[x,y]` identifies a cell, _x_ and _y_ being relative offsets
 - reading from a cell marks it as input, and locks it
 - assigning to a cell marks it as output
+- `@[x,y]` reads from a cell without locking it
 - the data types are: **integer**, **boolean**, and **character**
 - integer assignments to a cell are in **mod 36**
 - boolean assingments to a cell are `*` (true) or `.` (false)
 - character assignments are the character itself
 - local variables don't have to be declared, type is inferred
 - some global variables exist, such as **frame** and the array **vars[]**
-- `@[x,y]` reads from a cell without locking it (needed for `E` and `S`)
 - the rest is pretty standard B syntax \*waves hand\*
 
 ## example
@@ -81,6 +81,6 @@ N { if (@[0,-1]) {
 
 O { x = [-2,0] + 1;
     y = [-1,0] + 1;
-    [1,0] = [x,y]; }
+    [1,0] = @[x,y]; }
 
 ```

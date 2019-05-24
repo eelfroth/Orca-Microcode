@@ -14,6 +14,7 @@ this is a draft, or proposal, for a DSL that Orca can implement to define its op
 - boolean assingments to a cell are `*` (true) or `.` (false)
 - character assignments are the character itself
 - local variables don't have to be declared, type is inferred
+- implicit conversion from character (in base36) to integer
 - some global variables exist, such as **frame** and the array **vars[]**
 - the rest is pretty standard B syntax \*waves hand\*
 

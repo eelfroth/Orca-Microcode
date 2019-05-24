@@ -14,6 +14,7 @@ this is a draft, or proposal, for a DSL that Orca can implement to define its op
 - character assignments are the character itself
 - local variables don't have to be declared, type is inferred
 - some global variables exist, such as **frame** and the array **vars[]**
+- `@[x,y]` reads from a cell without locking it (needed for `E` and `S`)
 - the rest is pretty standard B syntax \*waves hand\*
 
 ## example
@@ -34,7 +35,7 @@ D { r = [-1,0] ? [-1,0] : 1;
     m = [1,0] ? [1,0] : 8;
     [0,1] = 0 == (frame / r) % m; }
 
-E { if (![1,0]) {
+E { if (!@[1,0]) {
         [0,0] = '.';
         [1,0] = 'E';
     } else {
@@ -69,9 +70,9 @@ L { s = [-2,0] ? [-2,0] : 1;
     for (i=0; i<n; i++) { l[i] = [i+1, 0]; }
     for (i=0; i<n; i++) { [i+1, 0] = l[(i+s)%n]; } }
 
-M { [0,1] = [-1,0] * [1,0];
+M { [0,1] = [-1,0] * [1,0]; }
 
-N { if (![0,-1]) {
+N { if (!@[0,-1]) {
         [0,0] = '.';
         [0,-1] = 'N';
     } else {

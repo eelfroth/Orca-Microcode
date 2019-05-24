@@ -4,7 +4,7 @@ this is a draft, or proposal, for a DSL that Orca can implement to define its op
 
 ## rough specification
 
-- `O { expression }` defines an operator, where _O_ has to be a single ASCII character
+- `O { expression }` defines an operator, where _O_ has to be a single character
 - `[x,y]` identifies a cell, _x_ and _y_ being relative offsets
 - reading from a cell marks it as input, and locks it
 - assigning to a cell marks it as output

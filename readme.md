@@ -1,6 +1,16 @@
 # Orca Microcode
 
-this is a draft, or proposal, for a DSL that Orca can implement to define its operators in a compact way
+This is a proposal for a language to define the behaviour of operators in [Orca](https://github.com/hundredrabbits/Orca). 
+The motivation behind this is to decouple the specification of the instruction set from the implementation of the virtual machine (i.e. 
+[Orca](https://github.com/hundredrabbits/Orca),
+[Orca-c](http://github.com/hundredrabbits/Orca-c), and
+[Orca Norns](https://github.com/itsyourbedtime/orca/)
+).
+With this modularity, instruction sets can be distributed as a single text file.
+It enables all implementations to easily stay up-to-date with the latest version of Orca's instruction set, and makes possible the creation and distribution of custom instruction sets.
+To utilise this, the implementation has to parse the microcode file and bring the instructions in it into a form it can execute. The parsing can be done once during initialisation, or at compile time (for compiled languages).
+
+Feedback and pull-requests welcome ^_^
 
 ## rough specification
 
